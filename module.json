@@ -10,10 +10,10 @@
       "discord": "Fair Strides#2148"
     }
   ],
-  "url": "",
+  "url": "https://github.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator",
   "license": "LICENSE",
   "readme": "README.md",
-  "bugs": "",
+  "bugs": "https://github.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator/issues",
   "changelog": "CHANGELOG.md",
   "flags": {},
   "version": "1.0.0",
@@ -44,8 +44,8 @@
     }
   ],
   "socket": false,
-  "manifest": "",
-  "download": "",
+  "manifest": "https://github.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator/blob/main/module.json",
+  "download": "https://github.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator/archive/refs/tags/v1.0.0.zip",
   "protected": false,
   "coreTranslation": false,
   "minimumSystemVersion": "0.78.15"
