@@ -13,7 +13,7 @@ You can access the interface in two ways: 1) from an actor's title bar or 2) fro
 
 ![Spellbook Generator Access](./img/screencaps/access.png)
 
-`game.modules.get('fair-strides-pf1e-spellbook-generator').api.showSpellBookGenUI(_, null);`
+`game.modules.get('fair-strides-pf1e-spellbook-generator').api.showSpellBookGenUI(null, null);`
 
 If you are a GM, you can drag-and-drop an actor onto the window to assign them as the spellbook's owner. A player can do similar with a dropdown.
 
