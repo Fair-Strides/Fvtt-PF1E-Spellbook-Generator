@@ -1,5 +1,4 @@
 import { getLink, getOldLink, setLink, delLink, defaultLink, spellCosts, spellSells, spellPages } from './common.mjs';
-//import { spellCosts, spellSells, spellPages } from './common.mjs';
 
 const template = 'modules/fair-strides-pf1e-spellbook-generator/template/dialog.hbs';  // Main Interface
 const template2 = 'modules/fair-strides-pf1e-spellbook-generator/template/dialogStats.hbs'; // Book Stats
@@ -31,6 +30,9 @@ export class SpellBookGenUI extends FormApplication {
 		this.linkClass = '';
 		this.linkLevel = 0;
 		this.linkData = { id: undefined, name: defaultLink, spellsTotal: 0, pagesTotal: 0, booksTotal: 0, price: 0, value: 0, spells0: 0, spells1: 0, spells2: 0, spells3: 0, spells4: 0, spells5: 0, spells6: 0, spells7: 0, spells8: 0, spells9: 0 };
+		if(object !== null) {
+			this._linkActor(object.id);
+		}
 	}
 
 	static open(actor) {
@@ -54,16 +56,16 @@ export class SpellBookGenUI extends FormApplication {
 		data.isGM = game.user.isGM;
 
         if(this.object === null && this.linkData?.spellsTotal === 0) {
-//        	console.log('here1');
+        	console.log('here1');
         	this.linkData = { id: undefined, name: defaultLink, spellsTotal: 0, pagesTotal: 0, booksTotal: 0, price: 0, value: 0, spells0: 0, spells1: 0, spells2: 0, spells3: 0, spells4: 0, spells5: 0, spells6: 0, spells7: 0, spells8: 0, spells9: 0 };
         }
         else if(this.object === null && this.linkData?.spellsTotal !== 0)
         {
-//        	console.log('here2');
+        	console.log('here2');
         	// Nothing, keep current values
         }
         else {
-//        	console.log('here3');
+        	console.log('here3');
         	this.linkData = getLink(this.object);
         }
 
@@ -199,11 +201,16 @@ export class SpellBookGenUI extends FormApplication {
 						let boolTest = level[0].includes(this.linkClass);
 						if(boolTest) {
 							spellLevel = level[1];
+							this.linkClass = this.linkClass[0].toUpperCase() + this.linkClass.substring(1);
+							break;
+						}
+						else {
+							spellLevel = -1;
 						}
 					}
-					this.linkClass = this.linkClass[0].toUpperCase() + this.linkClass.substring(1);
 				}
-				else {
+				
+				if(spellLevel === -1 || this.linkClass === '') {
 					let spellClasses = Object.entries(spell.data.learnedAt.class);
 					let classNumber = 0;
 				    spellLevel = 0;
@@ -510,7 +517,7 @@ export class SpellBookGenCreateUI extends FormApplication {
 		}
 		
 		if(this.spellBook.linked == null) {
-			createEmbeddedDocuments("Item", [spellBookItem]);
+			Item.create(spellBookItem);
 		}
 		else {
 			this.spellBook.linked.createEmbeddedDocuments("Item", [spellBookItem]);

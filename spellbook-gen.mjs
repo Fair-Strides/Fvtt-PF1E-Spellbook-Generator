@@ -12,7 +12,7 @@ function injectSpellBookButton(sheet, buttons) {
 
 	buttons.unshift({
 		class: 'spell-gen-button',
-		icon: 'fas fa-link',
+		icon: 'fab fa-leanpub',
 		label: game.i18n.localize('FSWorkshop.SpellBookGenerator.Title'),
 		onclick: async (ev) => showSpellBookGenUI(ev, sheet.actor),
 	});
