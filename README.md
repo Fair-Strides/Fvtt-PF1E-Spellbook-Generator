@@ -45,7 +45,7 @@ None available, but if you have ideas, please make a feature request. :)
 
 ## Install
 
-Manifest URL: https://github.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator/blob/main/module.json
+Manifest URL: https://raw.githubusercontent.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator/main/module.json
 
 ## Attribution
 
