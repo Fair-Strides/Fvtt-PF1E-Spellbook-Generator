@@ -1,0 +1,104 @@
+<form autocomplete='off'>
+	<div class='flexrow'>
+		<label for='bookOwner'>{{localize 'FSWorkshop.SpellBookGenerator.SelectOwner'}}</label>
+		{{#unless isGM}}
+		<select name='bookOwner' class='book-owner-select'>
+			{{selectOptions validActorChoices selected=linkedId}}
+		</select>
+		{{else}}
+		<label>{{localize 'FSWorkshop.SpellBookGenerator.GMCanOnlyDrop'}}</label>
+		{{/unless}}
+	</div>
+	<hr>
+	<div class='form-group flexrow' data-dtype='String' data-book-owner='{{linkedId}}'>
+		<img class='owner-link-img' src='{{linkedImg}}' title='{{localize 'FSWorkshop.SpellBookGenerator.OpenSheet'}}'></img>
+		<div class='flexcol book-owner-labels'>
+			<label>{{localize 'FSWorkshop.SpellBookGenerator.Name'}}</label>
+			<label>{{localize 'FSWorkshop.SpellBookGenerator.Id'}}</label>
+		</div>
+		<div class='flexcol book-owner-data'>
+			<input type='text' readonly class='book-owner-name' data-dtype='String'
+				value='{{linked.data.name}}'></input>
+			<input type='text' readonly class='book-owner-id' data-dtype='String' value='{{linkedId}}'></input>
+		</div>
+		<span class='owner-unlink' title='{{localize 'FSWorkshop.SpellBookGenerator.Unlink'}}'><i
+				class='fas fa-unlink'></i></span>
+	</div>
+	<div class='form-group flexrow' data-dtype='String' data-owner-class='{{linkedClass}}'>
+		<label for='ownerClass'>{{localize 'FSWorkshop.SpellBookGenerator.SelectOwnerClass'}}</label>
+		<select name='ownerClass' class='book-owner-select'>
+			{{selectOptions validClassChoices selected=linkedClass}}
+		</select>
+	</div>
+	<!--
+	<div class='form-group'>
+		<label>Link name</label>
+		<div class='form-fields'>
+			<input type='text' class='book-owner-var' data-dtype='String' placeholder='_linked'></input>
+		</div>
+	</div>
+	-->
+	<p class='help-text'><i class='fas fa-info-circle'></i> {{{localize 'FSWorkshop.SpellBookGenerator.Instructions'}}}</p>
+	<hr>
+	<div class='form-group flexrow'>
+		<label for='spellLevelSelect'>{{localize 'FSWorkshop.SpellBookGenerator.spellLevelSelect'}}</label>
+		<select name='spellLevelSelect' id='spellLevelSelect' class='spell-level-select'>
+			<option value='level0'>{{localize 'FSWorkshop.SpellBookGenerator.spellLevel0'}}</option>
+			<option value='level1'>{{localize 'FSWorkshop.SpellBookGenerator.spellLevel1'}}</option>
+			<option value='level2'>{{localize 'FSWorkshop.SpellBookGenerator.spellLevel2'}}</option>
+			<option value='level3'>{{localize 'FSWorkshop.SpellBookGenerator.spellLevel3'}}</option>
+			<option value='level4'>{{localize 'FSWorkshop.SpellBookGenerator.spellLevel4'}}</option>
+			<option value='level5'>{{localize 'FSWorkshop.SpellBookGenerator.spellLevel5'}}</option>
+			<option value='level6'>{{localize 'FSWorkshop.SpellBookGenerator.spellLevel6'}}</option>
+			<option value='level7'>{{localize 'FSWorkshop.SpellBookGenerator.spellLevel7'}}</option>
+			<option value='level8'>{{localize 'FSWorkshop.SpellBookGenerator.spellLevel8'}}</option>
+			<option value='level9'>{{localize 'FSWorkshop.SpellBookGenerator.spellLevel9'}}</option>
+		</select>
+	</div>
+	<div name='level0-list' id='level0-list' class='form-group flexrow' style='display: block' data-dtype='String' data-spellList0='{{listLevel0}}'>
+		<label for='spellList0'>{{localize 'FSWorkshop.SpellBookGenerator.spell'}}</label>
+		<textarea id='spellList0' name='spellList0' rows='10' cols='50'></textarea>
+	</div>
+	<div name='level1-list' id='level1-list' class='form-group flexrow' style='display: block' data-dtype='String' data-spellList1='{{listLevel1}}'>
+		<label for='spellList1'>{{localize 'FSWorkshop.SpellBookGenerator.spell'}}</label>
+		<textarea id='spellList1' name='spellList1' rows='10' cols='50'></textarea>
+	</div>
+	<div name='level2-list' id='level2-list' class='form-group flexrow' style='display: block' data-dtype='String' data-spellList2='{{listLevel2}}'>
+		<label for='spellList2'>{{localize 'FSWorkshop.SpellBookGenerator.spell'}}</label>
+		<textarea id='spellList2' name='spellList2' rows='10' cols='50'></textarea>
+	</div>
+	<div name='level3-list' id='level3-list' class='form-group flexrow' style='display: block' data-dtype='String' data-spellList3='{{listLevel3}}'>
+		<label for='spellList3'>{{localize 'FSWorkshop.SpellBookGenerator.spell'}}</label>
+		<textarea id='spellList3' name='spellList3' rows='10' cols='50'></textarea>
+	</div>
+	<div name='level4-list' id='level4-list' class='form-group flexrow' style='display: block' data-dtype='String' data-spellList4='{{listLevel4}}'>
+		<label for='spellList4'>{{localize 'FSWorkshop.SpellBookGenerator.spell'}}</label>
+		<textarea id='spellList4' name='spellList4' rows='10' cols='50'></textarea>
+	</div>
+	<div name='level5-list' id='level5-list' class='form-group flexrow' style='display: block' data-dtype='String' data-spellList5='{{listLevel5}}'>
+		<label for='spellList5'>{{localize 'FSWorkshop.SpellBookGenerator.spell'}}</label>
+		<textarea id='spellList5' name='spellList5' rows='10' cols='50'></textarea>
+	</div>
+	<div name='level6-list' id='level6-list' class='form-group flexrow' style='display: block' data-dtype='String' data-spellList6='{{listLevel6}}'>
+		<label for='spellList6'>{{localize 'FSWorkshop.SpellBookGenerator.spell'}}</label>
+		<textarea id='spellList6' name='spellList6' rows='10' cols='50'></textarea>
+	</div>
+	<div name='level7-list' id='level7-list' class='form-group flexrow' style='display: block' data-dtype='String' data-spellList7='{{listLevel7}}'>
+		<label for='spellList7'>{{localize 'FSWorkshop.SpellBookGenerator.spell'}}</label>
+		<textarea id='spellList7' name='spellList7' rows='10' cols='50'></textarea>
+	</div>
+	<div name='level8-list' id='level8-list' class='form-group flexrow' style='display: block' data-dtype='String' data-spellList8='{{listLevel8}}'>
+		<label for='spellList8'>{{localize 'FSWorkshop.SpellBookGenerator.spell'}}</label>
+		<textarea id='spellList8' name='spellList8' rows='10' cols='50'></textarea>
+	</div>
+	<div name='level9-list' id='level9-list' class='form-group flexrow' style='display: block' data-dtype='String' data-spellList9='{{listLevel9}}'>
+		<label for='spellList9'>{{localize 'FSWorkshop.SpellBookGenerator.spell'}}</label>
+		<textarea id='spellList9' name='spellList9' rows='10' cols='50'></textarea>
+	</div>
+	<hr>
+	<div class='form-group flexrow'>
+		<button name='spellBookCancel' type='submit'><span class='fas fa-times-circle'></span> {{localize 'FSWorkshop.SpellBookGenerator.buttonBookCancel'}}</button>
+		<button name='spellBookCreate' type='button'><span><i class='fab fa-leanpub'></i></span> {{localize 'FSWorkshop.SpellBookGenerator.buttonBookCreate'}}</button>
+		<button name='spellBookStats' type='button'><span><i class="fas fa-head-side-virus"></i></span> {{localize 'FSWorkshop.SpellBookGenerator.buttonBookStats'}}</button>
+	</div>
+</form>

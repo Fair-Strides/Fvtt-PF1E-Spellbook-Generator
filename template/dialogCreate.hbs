@@ -1,0 +1,30 @@
+<form autocomplete='off'>
+	<div class='form-group flexrow'>
+		<label for='spellBookSelect'>{{localize 'FSWorkshop.SpellBookGenerator.spellBookSelect'}}</label>
+		<select name='spellBookSelect' id='spellBookSelect' class='spell-book-select'>
+			<option value='0'>{{localize 'FSWorkshop.SpellBookGenerator.spellBook0'}}</option>
+			<option value='1'>{{localize 'FSWorkshop.SpellBookGenerator.spellBook1'}}</option>
+			<option value='2'>{{localize 'FSWorkshop.SpellBookGenerator.spellBook2'}}</option>
+		</select>
+	</div>
+	<div class='form-group flexrow'>
+		<div class='flexcol book-create-labels'>
+			<label>{{localize 'FSWorkshop.SpellBookGenerator.spellStatsTotal'}}</label>
+			<label>{{localize 'FSWorkshop.SpellBookGenerator.spellStatsPages'}}</label>
+			<label>{{localize 'FSWorkshop.SpellBookGenerator.spellStatsBooks'}}</label>
+			<label>{{localize 'FSWorkshop.SpellBookGenerator.spellStatsPrice'}}</label>
+			<label>{{localize 'FSWorkshop.SpellBookGenerator.spellStatsValue'}}</label>
+		</div>
+		<div class='flexcol book-create-data'>
+			<input type='text' readonly class='book-create-label' data-dtype='String' value='{{spellBook.linkData.spellsTotal}}'></input>
+			<input type='text' readonly class='book-create-label' data-dtype='String' value='{{spellBook.linkData.pagesTotal}}'></input>
+			<input type='text' readonly class='book-create-label' data-dtype='String' value='{{spellBookTotal}}'></input>
+			<input type='text' readonly class='book-create-label' data-dtype='String' value='{{spellBook.linkData.price}}'></input>
+			<input type='text' readonly class='book-create-label' data-dtype='String' value='{{spellBook.linkData.value}}'></input>
+		</div>
+	</div>
+	<div class='form-group flexrow'>
+		<button name='spellCreateCancel' type='submit'><span class='fas fa-times-circle'></span> {{localize 'FSWorkshop.SpellBookGenerator.buttonBookCancel'}}</button>
+		<button name='spellCreateCreate' type='submit'><span><i class='fab fa-leanpub'></i></span> {{localize 'FSWorkshop.SpellBookGenerator.buttonBookCreate'}}</button>
+	</div>
+</form>

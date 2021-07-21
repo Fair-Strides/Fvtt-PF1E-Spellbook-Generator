@@ -1,0 +1,52 @@
+{
+  "name": "fair-strides-pf1e-spellbook-generator",
+  "title": "Fair Strides' PF1E Spellbook Generator",
+  "description": "Provides a comprehensive for spellbook pricing, populating, and organization for loot.",
+  "author": "Fair Strides",
+  "authors": [
+    {
+      "name": "Fair Strides",
+      "url": "",
+      "discord": "Fair Strides#2148"
+    }
+  ],
+  "url": "",
+  "license": "LICENSE",
+  "readme": "README.md",
+  "bugs": "",
+  "changelog": "CHANGELOG.md",
+  "flags": {},
+  "version": "1.0.0",
+  "minimumCoreVersion": "0.8.8",
+  "compatibleCoreVersion": "0.8.8",
+  "scripts": [],
+  "esmodules": [
+    "spellbook-gen.mjs"
+  ],
+  "styles": [
+    "spellbook-gen.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "packs": [],
+  "system": [
+    "pf1"
+  ],
+  "dependencies": [
+    {
+      "name": "pf1",
+      "type": "system"
+    }
+  ],
+  "socket": false,
+  "manifest": "",
+  "download": "",
+  "protected": false,
+  "coreTranslation": false,
+  "minimumSystemVersion": "0.78.15"
+}
