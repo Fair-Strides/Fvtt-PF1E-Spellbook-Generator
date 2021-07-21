@@ -31,7 +31,7 @@ When all is said and done and you're ready to build the spellbook, you can chang
 
 If there is no actor assigned, the spellbook item will be made in the Items directory in the sidebar. On the other hand, if the actor is assigned, the spellbook will be made in their inventory and have their name attached to it for a personal charm. Not only that, but the spellbook will tell you what's in it...
 
-![Spellbook Generator Result](.img/screencaps/result.png)
+![Spellbook Generator Result](./img/screencaps/result.png)
 
 ### Configuration
 
@@ -45,7 +45,7 @@ None available, but if you have ideas, please make a feature request. :)
 
 ## Install
 
-Manifest URL: 
+Manifest URL: https://github.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator/blob/main/module.json
 
 ## Attribution
 
