@@ -13,6 +13,8 @@ You can access the interface in two ways: 1) from an actor's title bar or 2) fro
 
 ![Spellbook Generator Access](./img/screencaps/access.png)
 
+`game.modules.get('fair-strides-pf1e-spellbook-generator').api.showSpellBookGenUI(_, null);`
+
 If you are a GM, you can drag-and-drop an actor onto the window to assign them as the spellbook's owner. A player can do similar with a dropdown.
 
 From here, you can open a spell compendium (currently, it only recognizes the PF1E system's spells compendium) or use the Spells Browser to drag-and-drop spells into the window. If a class has been selected from the class list dropdown, then the spellbook generator tries to find the appropriate spell level for that casting class. If it can't find the class in the spell's casting list, it takes the average of all of the spell levels for the classes that can cast the spell (rounded down).
