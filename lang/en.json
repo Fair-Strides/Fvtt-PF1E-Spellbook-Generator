@@ -48,7 +48,9 @@
 			"spellBookSelect": "Type of Spellbook",
 			"spellBook0": "Compact Spellbook",
 			"spellBook1": "Normal Spellbook",
-			"spellBook2": "Travelling Spellbook"
+			"spellBook2": "Travelling Spellbook",
+			"spellBook3": "Formula Book",
+			"spellBook4": "Travelling Formula Book"
 		}
 	}
 }

@@ -10,6 +10,8 @@ const spellBookPack = 'pf-content\.pf-items';
 const spellBookIdCompact = 'g7Q6TmbUndATmjl8';
 const spellBookIdNormal = 'gfa1NtiKRA70XJPj';
 const spellBookIdTravel = 'LsbmGQ3QMmdnErEK';
+const formulaBookIdNormal = 'UGKUUw1904OBj7IW';
+const formulaBookIdTravel = 'LgZ1GA2oQ5coYtMU';
 
 export class SpellBookGenUI extends FormApplication {
 	linked = undefined;
@@ -186,15 +188,19 @@ export class SpellBookGenUI extends FormApplication {
 			this._linkActor(data.id);
 		}
 		else {
-			if(data.type === 'Item' && data.pack === 'pf1.spells')
+			if(data.type === 'Item')
 			{
 				const pack = game.packs.get(data.pack);
 				const index = await pack.getDocument(data.id);
 				let spell = await game.items.fromCompendium(index);
-				let spellText = '@Compendium[pf1.spells.' + data.id + ']{' + spell.name + '}\n';
+
+				if(spell.type !== 'spell')
+				    return false;
+
+				let spellText = '@Compendium[' + data.pack + '.' + data.id + ']{' + spell.name + '}\n';
 				let spellLevel = this.linkLevel;
 				
-				if(this.linkClass !== '') {
+				if(this.linkClass !== '' && this.linkClass !== undefined) {
 					this.linkClass = this.linkClass.toLowerCase();
 					let spellClasses = Object.entries(spell.data.learnedAt.class);
 					for(let [cls, level] of spellClasses) {
@@ -410,6 +416,7 @@ export class SpellBookGenCreateUI extends FormApplication {
 		this.spellBook = objectBook;
 		this.spellLists = spells;
 		this.spellBookTotal = 1;
+		this.spellBookType = 0;
 		
 		console.log(this.spellBook);
         console.log(this);
@@ -436,11 +443,14 @@ export class SpellBookGenCreateUI extends FormApplication {
 //		this.spellBook = data.objectBook ?? undefined;
 		data.spellBook = this.spellBook;
 		data.spellBookTotal = this.spellBookTotal;
+		data.spellBookChoices = {'0': 'Compact Spellbook', '1': 'Normal Spellbook', '2': 'Travelling Spellbook', '3': 'Formula Book', '4': 'Travelling Formula Book'};
+		data.spellBookType = this.spellBookType;
 		return data;
 	}
 	
 	async onCreateBook(event) {
 		this.spellBookId = undefined;
+		console.log("spellbook and this", this.spellBook, this);
 		
 		switch(this.spellBookType) {
 			case 0:
@@ -464,6 +474,20 @@ export class SpellBookGenCreateUI extends FormApplication {
 				this.spellBookName = ' Traveling Spellbook';
 				this.spellBookTotal = Math.ceil(this.spellBook.linkData.pagesTotal / this.spellBookPages);
 				break;
+			case 3:
+			    this.spellBookId = formulaBookIdNormal;
+				this.spellBookPages = 100;
+				this.spellBookWeight = 3;
+				this.spellBookName = ' Formula Book';
+				this.spellBookTotal = Math.ceil(this.spellBook.linkData.pagesTotal / this.spellBookPages);
+				break;
+			case 4:
+			this.spellBookId = formulaBookIdTravel;
+				this.spellBookPages = 50;
+				this.spellBookWeight = 1;
+				this.spellBookName = ' Traveling Fomula Book';
+				this.spellBookTotal = Math.ceil(this.spellBook.linkData.pagesTotal / this.spellBookPages);
+				break;
 			default:
 				this.spellBookId = spellBookIdNormal;
 				this.spellBookPages = 100;
@@ -478,21 +502,25 @@ export class SpellBookGenCreateUI extends FormApplication {
 		
 		if(this.spellBookTotal > 1) {
 			this.spellBookName += 's';
-			spellBookItem.data.price *= this.spellBooksTotal;
+			spellBookItem.data.price *= this.spellBookTotal;
 		}
 		
 		spellBookItem.data.description.value += '<hr><p><b><u>Pages used:</u></b> ' + parseInt(this.spellBook.linkData.pagesTotal) + '</p><p><b><u>Books carried:</u></b> ' + parseInt(this.spellBookTotal) + '<hr>';
 
-		spellBookItem.data.price += this.spellBook.linkData.price;
+console.log("spellbook price before: ", spellBookItem.data.price);
+		spellBookItem.data.price += parseInt(this.spellBook.linkData.price);
+console.log("spellbook price after: ", spellBookItem.data.price);
 
 		spellBookItem.data.weight = this.spellBookWeight * this.spellBookTotal;
 		
 		console.log('spellbook.linked', this.spellBook.linked);
 		if(this.spellBook.linked == null) {
 			spellBookItem.data.identifiedName = this.spellBookName;
+			spellBookItem.name = this.spellBookName;
 		}
 		else {
 			spellBookItem.data.identifiedName = this.spellBook.linked.data.name + "'s" + this.spellBookName;
+			spellBookItem.name = this.spellBook.linked.data.name + "'s" + this.spellBookName;
 		}
 
 		for(let i = 0; i < 10; i++) {
@@ -534,7 +562,8 @@ export class SpellBookGenCreateUI extends FormApplication {
 	
 	onSelectBook(event) {
 		console.log(event);
-		this.spellBookType = event.target.options.selectedIndex;
+//		this.spellBookType = event.target.options.selectedIndex;
+		this.spellBookType = event.target.value;
 		//console.log('My window', this);
 
 		switch(this.spellBookType) {
@@ -559,6 +588,20 @@ export class SpellBookGenCreateUI extends FormApplication {
 				this.spellBookName = ' Traveling Spellbook';
 				this.spellBookTotal = Math.ceil(this.spellBook.linkData.pagesTotal / this.spellBookPages);
 				break;
+			case 3:
+			    this.spellBookId = formulaBookIdNormal;
+				this.spellBookPages = 100;
+				this.spellBookWeight = 3;
+				this.spellBookName = ' Formula Book';
+				this.spellBookTotal = Math.ceil(this.spellBook.linkData.pagesTotal / this.spellBookPages);
+				break;
+			case 4:
+			this.spellBookId = formulaBookIdTravel;
+				this.spellBookPages = 50;
+				this.spellBookWeight = 1;
+				this.spellBookName = ' Traveling Fomula Book';
+				this.spellBookTotal = Math.ceil(this.spellBook.linkData.pagesTotal / this.spellBookPages);
+				break;
 			default:
 				this.spellBookId = spellBookIdNormal;
 				this.spellBookPages = 100;
@@ -571,8 +614,13 @@ export class SpellBookGenCreateUI extends FormApplication {
 		this.spellBookTotal = Math.ceil(this.spellBook.linkData.pagesTotal / this.spellBookPages);
 		console.log("Spellbooks after: ", this.spellBookTotal);
 
-        document.getElementById('spellBookSelect').selectedIndex = this.spellBookType;
-	    this.render(false);
+//        let elementChoice = document.getElementById('spellBookSelect');
+//        console.log("Element, selection, value", elementChoice, elementChoice.selectedIndex, elementChoice.value);
+//
+//        document.getElementById('spellBookSelect').options[this.spellBookType].selected = 'selected';
+//        document.getElementById('spellBookSelect').selectedIndex = this.spellBookType.toString();
+//		document.getElementById('spellBookSelect').value = this.spellBookType.toString();
+	    this.render(true);
 	}
 	
 	async _onSubmit(event, updateData, preventClose, preventRender) {
