@@ -16,9 +16,9 @@
   "bugs": "https://github.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator/issues",
   "changelog": "CHANGELOG.md",
   "flags": {},
-  "version": "1.0.0",
+  "version": "1.1.0",
   "minimumCoreVersion": "0.8.8",
-  "compatibleCoreVersion": "0.8.8",
+  "compatibleCoreVersion": "0.8.9",
   "scripts": [],
   "esmodules": [
     "spellbook-gen.mjs"
@@ -45,7 +45,7 @@
   ],
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator/main/module.json",
-  "download": "https://github.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator/archive/refs/tags/v1.0.0.1.zip",
+  "download": "https://github.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator/archive/refs/tags/v1.1.zip",
   "protected": false,
   "coreTranslation": false,
   "minimumSystemVersion": "0.78.15"
