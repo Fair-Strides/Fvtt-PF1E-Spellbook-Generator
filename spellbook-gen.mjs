@@ -1,4 +1,4 @@
-import { module, getLink, actorName } from './module/common.mjs';
+import { spellFlags, getLink, actorName } from './module/common.mjs';
 import { SpellBookGenUI } from './module/dialog.mjs';
 
 /** Logic */
@@ -19,7 +19,7 @@ function injectSpellBookButton(sheet, buttons) {
 }
 
 Hooks.once('ready', () => {
-	game.modules.get(module).api = { showSpellBookGenUI }
+	game.modules.get(spellFlags.module).api = { showSpellBookGenUI }
 
 	Hooks.on('getActorSheetPFHeaderButtons', injectSpellBookButton);
 });

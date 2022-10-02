@@ -1,13 +1,12 @@
 {
-  "name": "fair-strides-pf1e-spellbook-generator",
   "title": "Fair Strides' PF1E Spellbook Generator",
   "description": "Provides a comprehensive for spellbook pricing, populating, and organization for loot.",
-  "author": "Fair Strides",
   "authors": [
     {
       "name": "Fair Strides",
       "url": "https://github.com/Fair-Strides",
-      "discord": "Fair Strides#2148"
+      "discord": "Fair Strides#2148",
+      "flags": {}
     }
   ],
   "url": "https://github.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator",
@@ -15,11 +14,7 @@
   "readme": "README.md",
   "bugs": "https://github.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator/issues",
   "changelog": "CHANGELOG.md",
-  "flags": {},
-  "version": "1.1.0",
-  "minimumCoreVersion": "0.8.8",
-  "compatibleCoreVersion": "0.8.9",
-  "scripts": [],
+  "version": "2.0.0",
   "esmodules": [
     "spellbook-gen.mjs"
   ],
@@ -30,23 +25,24 @@
     {
       "lang": "en",
       "name": "English",
-      "path": "lang/en.json"
+      "path": "lang/en.json",
+      "flags": {}
     }
   ],
-  "packs": [],
-  "system": [
-    "pf1"
-  ],
-  "dependencies": [
-    {
-      "name": "pf1",
-      "type": "system"
-    }
-  ],
-  "socket": false,
   "manifest": "https://raw.githubusercontent.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator/main/module.json",
   "download": "https://github.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator/archive/refs/tags/v1.1.zip",
-  "protected": false,
-  "coreTranslation": false,
-  "minimumSystemVersion": "0.78.15"
+  "id": "fair-strides-pf1e-spellbook-generator",
+  "relationships": {
+    "systems": [
+      {
+        "id": "pf1",
+        "type": "system",
+        "compatibility": {}
+      }
+    ]
+  },
+  "compatibility": {
+    "minimum": 10,
+	"verified": 10
+  }
 }

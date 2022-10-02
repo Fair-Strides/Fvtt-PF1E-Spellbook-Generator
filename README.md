@@ -15,23 +15,23 @@ You can access the interface in two ways: 1) from an actor's title bar or 2) fro
 
 `game.modules.get('fair-strides-pf1e-spellbook-generator').api.showSpellBookGenUI(null, null);`
 
-If you are a GM, you can drag-and-drop an actor onto the window to assign them as the spellbook's owner. A player can do similar with a dropdown.
+If you are a GM, you can drag-and-drop an actor onto the window to assign them as the book's owner. A player can do similar with a dropdown.
 
-From here, you can open a spell compendium (currently, it only recognizes the PF1E system's spells compendium) or use the Spells Browser to drag-and-drop spells into the window. If a class has been selected from the class list dropdown, then the spellbook generator tries to find the appropriate spell level for that casting class. If it can't find the class in the spell's casting list, it takes the average of all of the spell levels for the classes that can cast the spell (rounded down).
+From here, you can open a spell compendium or use the Spells Browser to drag-and-drop spells into the window. If a class has been selected from the class list dropdown, then the spellbook generator tries to find the appropriate spell level for that casting class. If it can't find the class in the spell's casting list, it takes the average of all of the spell levels for the classes that can cast the spell (rounded down).
 
 ![Spellbook Generator Display](./img/screencaps/setup.png)
 
-You can check your spellbook's progress as you're building it by clicking the "Book Info" button to get a static display of the book's progress (currently I don't keep it constantly updated, but closing and reopening the stats window works).
+You can check your book's progress as you're building it by clicking the "Book Info" button to get a display of the book's progress off to the right of the window.
 
-NOTE: It assumes a normal 100-page spellbook in the stats display. This can be changed when you go to create the spellbook.
+NOTE: It assumes a normal 100-page book in the stats display. This can be changed when you go to create the book.
 
 ![Spellbook Generator Stats](./img/screencaps/stats.png)
 
-When all is said and done and you're ready to build the spellbook, you can change which type of spellbook it is (the Compact, Normal, or Travelling variety). These books have different weights, starting prices, and number of pages. The number of books needed to hold all of the spells will be updated accordingly when you change the spellbook type. The price to buy and sell the spellbook does NOT include the base cost of the spellbook(s) themselves.
+When all is said and done and you're ready to build the spellbook or formula book, you can change which type of book it is (the Compact, Normal, or Travelling variety). These books have different weights, starting prices, and number of pages. The number of books needed to hold all of the spells will be updated accordingly when you change the book type. The price to buy and sell the book does NOT include the base cost of the book(s) themselves.
 
 ![Spellbook Generator Creation](./img/screencaps/create.png)
 
-If there is no actor assigned, the spellbook item will be made in the Items directory in the sidebar. On the other hand, if the actor is assigned, the spellbook will be made in their inventory and have their name attached to it for a personal charm. Not only that, but the spellbook will tell you what's in it...
+If there is no actor assigned, the book item will be made in the Items directory in the sidebar. On the other hand, if the actor is assigned, the book will be made in their inventory and have their name attached to it for a personal charm. Not only that, but the book will tell you what's in it...
 
 ![Spellbook Generator Result](./img/screencaps/result.png)
 
@@ -41,9 +41,7 @@ None available, but if you have ideas, please make a feature request. :)
 
 ### Known Issues
 
-1. In the final window to create the spellbook, the spellbook type dropdown doesn't change its text when you change selections.
-
-2. I think the Macro might be GM-only (or might not like running in a browser); didn't like passing in a null actor when testing as a player in Firefox...
+1. I think the Macro might be GM-only (or might not like running in a browser); didn't like passing in a null actor when testing as a player in Firefox...
 
 ## Install
 

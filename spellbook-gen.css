@@ -3,7 +3,11 @@
 	flex: 1 10 4em;
 	max-height: 2em;
 	margin-left: 1em;
-	align-self: center;
+
+}
+
+.fsworkshop-spellbook-gen .fs-center-text {
+	text-align: center;
 }
 
 .fsworkshop-spellbook-gen input,
@@ -22,6 +26,7 @@
 	margin: 4px;
 }
 
+.fsworkshop-spellbook-gen .help-text,
 .fsworkshop-spellbook-gen code {
 	font-weight: bold;
 	color: darkblue;
@@ -51,6 +56,11 @@
 	flex: 1 10 6em;
 }
 
+.fsworkshop-spellbook-gen .book-stats-labels {
+	align-self: left;
+	margin-top: 0.5em;
+}
+
 .fsworkshop-spellbook-gen .book-owner-data {
 	flex: 3 0 10em;
 }
@@ -63,23 +73,18 @@
 	max-width: 60%;
 }
 
-
-/* CSS for the Book Stats display */
-.fsworkshop-spellbook-gen-stats .book-stats-label {
-	flex: 1 0 2em;
-	font-family: monospace;
+.fsworkshop-spellbook-gen .spellLists {
+	max-height: 16.8em;
+    overflow: auto;
+    display: false;
 }
 
-.fsworkshop-spellbook-gen-stats .form-group label {
-	padding: 1px 3px;
+.fsworkshop-spellbook-gen .spellButtons {
+	width: 30%;
 }
 
-.fsworkshop-spellbook-gen-stats .book-stats-labels {
-	flex: 3 0 2em;
-}
-
-.fsworkshop-spellbook-gen-stats .book-stats-data {
-	flex: 3 0 10em;
+.fsworkshop-spellbook-gen .fsHidden {
+	display: none;
 }
 
 /* CSS for the Create Book form */
