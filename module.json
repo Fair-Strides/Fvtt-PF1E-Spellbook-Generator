@@ -1,6 +1,6 @@
 {
   "title": "Fair Strides' PF1E Spellbook Generator",
-  "description": "Provides a comprehensive for spellbook pricing, populating, and organization for loot.",
+  "description": "Provides a comprehensive for spellbook and formula book pricing, populating, and organization for loot.",
   "authors": [
     {
       "name": "Fair Strides",
@@ -30,7 +30,7 @@
     }
   ],
   "manifest": "https://raw.githubusercontent.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator/main/module.json",
-  "download": "https://github.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator/archive/refs/tags/v1.1.zip",
+  "download": "https://github.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator/archive/refs/tags/v2.0.zip",
   "id": "fair-strides-pf1e-spellbook-generator",
   "relationships": {
     "systems": [
