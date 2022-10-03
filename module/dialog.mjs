@@ -3,7 +3,7 @@ import { spellFlags, getLink, setLink, delLink, spellCosts, spellSells, spellPag
 const template = 'modules/fair-strides-pf1e-spellbook-generator/template/dialog.hbs';  // Main Interface
 const template2 = 'modules/fair-strides-pf1e-spellbook-generator/template/dialogCreate.hbs'; // Book Creation Checklist
 
-Hooks.once('init', () => loadTemplates([template, template3]));
+Hooks.once('init', () => loadTemplates([template, template2]));
 
 const spellBookPack = 'pf-content\.pf-items';
 const spellBookIdCompact = 'g7Q6TmbUndATmjl8';
