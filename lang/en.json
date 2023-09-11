@@ -3,7 +3,7 @@
 		"SpellBookGenerator": {
 			"SelectOwner": "Select actor",
 			"Title": "Spellbook Generator",
-			"TitleBar": "Spellbook Generator for {0}",
+			"TitleBar": "Spellbook Generator for {actor}",
 			"Setting": "Actor linking",
 			"Description": "Adds actor linking, allowing second actor to appear in rollData via '@_linked'.",
 			"Instructions": "Drag & drop valid actor onto this dialog to register them.<br/>Alternatively use the dropdown menu for it.<p>They will be registered as the spellbook's owner and used to filter spellcasting classes.",

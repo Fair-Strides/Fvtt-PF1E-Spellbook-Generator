@@ -25,7 +25,7 @@ export class SpellBookGenUI extends FormApplication {
 	constructor(object, options) {
 		super(object, options);
 
-		this.options.title = this.object ? game.i18n.localize('FSWorkshop.SpellBookGenerator.TitleBar').format(this.object?.name) : game.i18n.localize('FSWorkshop.SpellBookGenerator.Title');
+		this.options.title = this.object ? game.i18n.format('FSWorkshop.SpellBookGenerator.TitleBar', {0: this.object?.name}) : game.i18n.localize('FSWorkshop.SpellBookGenerator.Title');
 		this.options.classes.push(`spellbook-gen-id-${this.object?.id}`);
 		this.linkedId = undefined;
 		this.linked = undefined;
@@ -150,7 +150,7 @@ export class SpellBookGenUI extends FormApplication {
 			this.linkedId = actorId;
 			this.linkedClass = undefined;
 
-			this.options.title = game.i18n.localize('FSWorkshop.SpellBookGenerator.TitleBar').format(this.object.name);			
+			this.options.title = game.i18n.format('FSWorkshop.SpellBookGenerator.TitleBar', {0: this.object.name})
 		} else {
 			console.error('SPELLBOOK GENERATOR | Linked actor', actorId, 'not found!');
 		}
@@ -194,7 +194,6 @@ export class SpellBookGenUI extends FormApplication {
 		}
 
 		let dataArray = data.uuid.split(".");
-		
 		if (data.type === 'Actor') {
 			this._linkActor(dataArray[1]);
 		}
@@ -212,14 +211,21 @@ export class SpellBookGenUI extends FormApplication {
 				
 				if("spell" + spellName in this.spellBook.spells) { return; } // Spell has already been added!
 				
-				let spellText = '@UUID[Compendium.' + dataArray[1] + '.' + dataArray[2] + '.' + dataArray[3] + ']{' + spell.name + '}\n';
+				let spellText = '@UUID[Compendium.' + dataArray[1] + '.' + dataArray[2] + '.Item.' + dataArray[3] + ']{' + spell.name + '}\n';
 				let spellLevel = -1;
 				
 				if(this.linkedClass !== '' && this.linkedClass !== undefined) {
 					this.linkedClass = this.linkedClass.toLowerCase();
 					let spellClasses = Object.entries(spell.data.learnedAt.class);
+					if(spell.data.learnedAt.class[this.linkedClass] !== null)
+					{
+						spellLevel = spell.data.learnedAt.class[this.linkedClass];
+						this.linkedClass = this.linkedClass[0].toUpperCase() + this.linkedClass.substring(1);
+					}
+					/*
 					for(let [cls, level] of spellClasses) {
-						let boolTest = level[0].includes(this.linkedClass);
+						console.log(`Class: ${cls}, Level: ${level}.`);
+						let boolTest = Object.keys(spellClasses).includes(this.linkedClass);
 						if(boolTest) {
 							spellLevel = level[1];
 							this.linkedClass = this.linkedClass[0].toUpperCase() + this.linkedClass.substring(1);
@@ -229,15 +235,15 @@ export class SpellBookGenUI extends FormApplication {
 							spellLevel = -1;
 						}
 					}
+					*/
 				}
 				
 				if(spellLevel === -1) {
-					let spellClasses = Object.entries(spell.system.learnedAt.class);
-					let classNumber = 0;
+					let spellValues = Object.values(spell.system.learnedAt.class);
+					let classNumber = spellValues.length;
 				    spellLevel = 0;
-					for(let [cls, level] of spellClasses) {
-						classNumber++;
-						spellLevel += level[1];
+					for(let level of spellValues) {
+						spellLevel += level;
 					}
 
 					spellLevel = Math.max(0, Math.floor(spellLevel / classNumber));
@@ -510,6 +516,7 @@ export class SpellBookGenCreateUI extends FormApplication {
 	spellBookPages = 0;
 	spellBookTotal = 1;
 	spellBookWeight = 1;
+	spellBookPrice = 0;
 	spellBookId = undefined;
 	spellBookName = undefined;
 	
@@ -521,6 +528,7 @@ export class SpellBookGenCreateUI extends FormApplication {
 		this.spellLists = spellLists;
 		this.spellBookTotal = 1;
 		this.spellBookType = 0;
+		this.spellBookPrice = 0;
 	}
 	
 	static open(spellGenUI, spells, spellLists) {
@@ -599,15 +607,17 @@ export class SpellBookGenCreateUI extends FormApplication {
 		const pack = game.packs.get(spellBookPack);
 		const index = await pack.getDocument(this.spellBookId);
 		let spellBookItem = await game.items.fromCompendium(index);
-		
+
+		/*
 		if(this.spellBookTotal > 1) {
 			this.spellBookName += 's';
 			spellBookItem.data.price *= this.spellBookTotal;
 		}
+		*/
 		
 		spellBookItem.data.description.value += '<hr><p><b><u>Pages used:</u></b> ' + parseInt(this.spellBookData.pagesTotal) + '</p><p><b><u>Books carried:</u></b> ' + parseInt(this.spellBookTotal) + '<hr>';
 
-		spellBookItem.data.price += parseInt(this.spellBookData.price);
+		spellBookItem.data.price = parseInt(this.spellBookData.price);
 		spellBookItem.data.weight = this.spellBookWeight * this.spellBookTotal;
 		
 		console.log('spellbook.linked', this.spellBook.linked);
@@ -635,7 +645,7 @@ export class SpellBookGenCreateUI extends FormApplication {
 					case 9: spellBookItem.data.description.value += '<h2>9th Level</h2>'; break;
 				}
 				
-				spellBookItem.data.description.value += TextEditor.enrichHTML(this.spellLists[i]) + '<br /><br />';
+				spellBookItem.data.description.value += await TextEditor.enrichHTML(this.spellLists[i]) + '<br /><br />';
 			}
 		}
 		
@@ -653,10 +663,12 @@ export class SpellBookGenCreateUI extends FormApplication {
 		this.close();
 	}
 	
-	onSelectBook(event) {
+	async onSelectBook(event) {
 		console.log(event);
 		this.spellBookType = parseInt(event.target.value);
-
+		this.spellBookData.price -= this.spellBookPrice;
+		this.spellBookData.value -= (this.spellBookPrice / 2);
+		
 		switch(this.spellBookType) {
 			case 0:
 				this.spellBookId = spellBookIdCompact;
@@ -700,8 +712,21 @@ export class SpellBookGenCreateUI extends FormApplication {
 				this.spellBookName = ' Spellbook';
 				this.spellBookTotal = Math.ceil(this.spellBookData.pagesTotal / this.spellBookPages);
 		}
+
+		const pack = game.packs.get(spellBookPack);
+		const index = await pack.getDocument(this.spellBookId);
+		let spellBookItem = await game.items.fromCompendium(index);
+
+		if(this.spellBookTotal > 1) {
+			this.spellBookName += 's';
+			spellBookItem.data.price *= this.spellBookTotal;
+		}
+
+		this.spellBookPrice = spellBookItem.data.price;
 		
 		this.spellBookTotal = Math.ceil(this.spellBookData.pagesTotal / this.spellBookPages);
+		this.spellBookData.price += this.spellBookPrice;
+		this.spellBookData.value += (this.spellBookPrice / 2);
 
 	    this.render(true);
 	}
