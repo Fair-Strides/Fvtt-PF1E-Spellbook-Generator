@@ -1,9 +1,14 @@
 
 # Change Log
 
+## [2.1.0] - 2023-09-11
+
+- Updated to be compatible with Foundry v11.
+- Added ability to save and restore spellbook progress to an actor or the world.
+
 ## [2.0.1] - 2022-10-03
 
-Fixed an error when removing Stats template.
+- Fixed an error when removing Stats template.
 
 ### Fixed
 

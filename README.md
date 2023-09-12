@@ -1,6 +1,10 @@
 # Pathfinder 1E Spellbook Generator
 A framework for creating and pricing spellbooks.
 
+### New Features:
+
+In version 2.1, I've added a way to save an in-progress spellbook to either the actor's flags or the world as a setting. You can also restore the data if desired, allowing for a way to "transfer" spellbook data between actors as it were. This does come with a warning, though: there is very little in the way of a saftey net here. If the world data doesn't exist, the spellbook will be reset to a blank slate of progress.
+
 ### Inspiration
 
 I have a separate text file on my computer for years for calculating the cost of spells, and I've always found it tedious to price out spellbooks. I had the beginnings of an idea a while back when seeing what modules could do, and then I'd seen Noon's spellbook macro and thought I could use that for inspiration and spring board off of that idea. This would be that result, and I'm actually quite proud of how it's turned out as my first module.
@@ -37,7 +41,9 @@ If there is no actor assigned, the book item will be made in the Items directory
 
 ### Configuration
 
-None available, but if you have ideas, please make a feature request. :)
+None available as such, but if you have ideas, please make a feature request. :)
+
+There is a toggleable setting that is used to flush the saved world data for an in-progress spellbook.
 
 ### Known Issues
 

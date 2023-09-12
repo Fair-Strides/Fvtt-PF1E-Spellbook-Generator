@@ -5,7 +5,7 @@
     {
       "name": "Fair Strides",
       "url": "https://github.com/Fair-Strides",
-      "discord": "Fair Strides#2148",
+      "discord": "fairstrides",
       "flags": {}
     }
   ],
@@ -14,7 +14,7 @@
   "readme": "README.md",
   "bugs": "https://github.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator/issues",
   "changelog": "CHANGELOG.md",
-  "version": "2.0.1",
+  "version": "2.1",
   "esmodules": [
     "spellbook-gen.mjs"
   ],
@@ -30,7 +30,7 @@
     }
   ],
   "manifest": "https://raw.githubusercontent.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator/main/module.json",
-  "download": "https://github.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator/archive/refs/tags/v2.0.1.zip",
+  "download": "https://github.com/Fair-Strides/Fvtt-PF1E-Spellbook-Generator/archive/refs/tags/v2.1.zip",
   "id": "fair-strides-pf1e-spellbook-generator",
   "relationships": {
     "systems": [
@@ -43,6 +43,6 @@
   },
   "compatibility": {
     "minimum": 10,
-	"verified": 10
+	  "verified": 10
   }
 }

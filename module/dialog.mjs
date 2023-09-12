@@ -524,7 +524,7 @@ export class SpellBookGenCreateUI extends FormApplication {
 	spellBook = undefined;
 	spellBookData = undefined;
 	spellLists = undefined;
-	spellBookType = 0;
+	spellBookType = 1;
 	spellBookPages = 0;
 	spellBookTotal = 1;
 	spellBookWeight = 1;
@@ -539,7 +539,7 @@ export class SpellBookGenCreateUI extends FormApplication {
 		this.spellBookData = objectData;
 		this.spellLists = spellLists;
 		this.spellBookTotal = 1;
-		this.spellBookType = 0;
+		this.spellBookType = 1;
 		this.spellBookPrice = 0;
 	}
 	
