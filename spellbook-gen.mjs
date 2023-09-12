@@ -18,6 +18,28 @@ function injectSpellBookButton(sheet, buttons) {
 	});
 }
 
+// Do anything after initialization but before ready
+Hooks.once("setup", function() {
+    game.settings.register(spellFlags.module, "spellbook", {
+		name: "Spellbook Data",
+        hint: "The world's saved spellbook progress that is not tied to an Actor.",
+        default: null,
+        scope: "world",
+        type: Object,
+        config: false
+	});
+
+	game.settings.register(spellFlags.module, "flushBook", {
+		name: "Clear Spellbook Data",
+        hint: "Deletes the world's saved spellbook progress",
+        default: false,
+        scope: "world",
+        type: Boolean,
+        config: true,
+        onChange: _ => function() { game.settings.set(spellFlags.module, "spellbook", null); }
+	})
+});
+
 Hooks.once('ready', () => {
 	game.modules.get(spellFlags.module).api = { showSpellBookGenUI }
 

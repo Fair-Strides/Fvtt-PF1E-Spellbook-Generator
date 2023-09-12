@@ -1,5 +1,7 @@
 <form autocomplete='off'>
+	{{!-- Linked Actor Display --}}
 	<div>
+		{{!-- Spellbook Linked Actor selection --}}
 		<div class='flexrow'>
 			<label for='bookOwner'>{{localize 'FSWorkshop.SpellBookGenerator.SelectOwner'}}</label>
 			{{#unless isGM}}
@@ -11,6 +13,7 @@
 			{{/unless}}
 		</div>
 		<hr>
+		{{!-- Spellbook Linked Actor info --}}
 		<div class='form-group flexrow' data-dtype='String' data-book-owner='{{linkedId}}'>
 			<img class='owner-link-img' src='{{linkedImg}}' title='{{localize 'FSWorkshop.SpellBookGenerator.OpenSheet'}}'></img>
 			<div class='flexcol book-owner-labels'>
@@ -26,6 +29,7 @@
 					class='fas fa-unlink'></i></span>
 		</div>
 	</div>
+	{{!-- Spell List Display --}}
 	<div class="flexrow">
 		<div class="flexcol">
 			<div class='form-group flexrow' data-dtype='String' data-owner-class='{{linkedClass}}'>
@@ -34,15 +38,18 @@
 					{{selectOptions validClassChoices selected=linkedClass}}
 				</select>
 			</div>
-			<!--
-			<div class='form-group'>
-				<label>Link name</label>
-				<div class='form-fields'>
-					<input type='text' class='book-owner-var' data-dtype='String' placeholder='_linked'></input>
+			<p class='help-text fs-center-text'><i class='fas fa-info-circle'></i> {{{localize 'FSWorkshop.SpellBookGenerator.Instructions'}}}</p>
+			
+			{{!-- Commands Section --}}
+			<div class="flexcol">
+				<button name="commands">{{localize 'FSWorkshop.SpellBookGenerator.Commands.Label'}}</button>
+				<div id="commandsList">
+					<button name="saveActor"{{#unless this.linked}} disabled{{/unless}}>{{localize 'FSWorkshop.SpellBookGenerator.Commands.SaveToActor' actor=this.linked.name}}</button>
+					<button name="saveWorld">{{localize 'FSWorkshop.SpellBookGenerator.Commands.SaveToWorld'}}</button>
+					<button name="restoreActor"{{#unless this.linked}} disabled{{/unless}}>{{localize 'FSWorkshop.SpellBookGenerator.Commands.RestoreFromActor' actor=this.linked.name}}</button>
+					<button name="restoreWorld">{{localize 'FSWorkshop.SpellBookGenerator.Commands.RestoreFromWorld'}}</button>
 				</div>
 			</div>
-			-->
-			<p class='help-text fs-center-text'><i class='fas fa-info-circle'></i> {{{localize 'FSWorkshop.SpellBookGenerator.Instructions'}}}</p>
 			<hr>
 			<div class='form-group flexrow'>
 				<label for='spellLevelSelect'>{{localize 'FSWorkshop.SpellBookGenerator.spellLevelSelect'}}</label>
@@ -189,6 +196,7 @@
 				</div>
 			</div>
 		</div>
+		{{!-- Spellbook Details --}}
 		<div id='spellStats' {{#if statsHidden}}class='fsHidden'{{/if}}>
 			<div class='flexrow'>
 			<div class='flexcol book-stats-labels'>

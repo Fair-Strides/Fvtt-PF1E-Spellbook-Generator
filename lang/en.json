@@ -55,7 +55,15 @@
 			"spellBook1": "Normal Spellbook",
 			"spellBook2": "Travelling Spellbook",
 			"spellBook3": "Formula Book",
-			"spellBook4": "Travelling Formula Book"
+			"spellBook4": "Travelling Formula Book",
+			"Commands": {
+				"Label": "Commands",
+				"SaveToActor": "Save spellbook progress to {actor}",
+				"SaveToWorld": "Save spellbook progress to World (replaces previous data!)",
+				"RestoreFromActor": "Restore spellbook progress from {actor}",
+				"RestoreFromWorld": "Restore spellbook progress from World (replaces previous data!)"
+			},
+			"ActorNotLinked": "There is no actor linked to restore/transfer spellbook progress to. Please link one."
 		}
 	}
 }

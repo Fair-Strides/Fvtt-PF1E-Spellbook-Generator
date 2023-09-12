@@ -1,6 +1,7 @@
 export const spellFlags = {
 	module: 'fair-strides-pf1e-spellbook-generator',
 	actorKey: 'spellBookGen',
+	bookKey: 'spellBookData',
 	keymaster: 'fsworkshop',
 	defaultLink: '_linkedCaster'
 };
