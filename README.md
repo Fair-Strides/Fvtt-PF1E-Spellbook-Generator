@@ -60,3 +60,5 @@ Similar to the great M.A., I'd appreciate a line in the credits if my work or my
 ## License
 
 This software is distributed under the [MIT License](./LICENSE), and by extension under [FVTT's Module Development License](https://foundryvtt.com/article/license/).
+
+Dummy line to be removed.
